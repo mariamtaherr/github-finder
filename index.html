@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Profile Finder</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+    <main class="mx-auto w-full max-w-4xl px-4 py-10 sm:px-6 sm:py-16">
+      <!-- Header -->
+      <header class="text-center">
+        <h1 class="text-3xl font-bold tracking-tight sm:text-5xl">
+          GitHub Profile Finder
+        </h1>
+        <p class="mt-3 text-base text-slate-400 sm:text-lg">
+          Search any GitHub user to see their profile and latest repositories.
+        </p>
+      </header>
+
+      <!-- Search -->
+      <section class="mx-auto mt-8 max-w-2xl" aria-label="Search">
+        <form id="search-form" class="flex flex-col gap-3 sm:flex-row" novalidate>
+          <label for="search-input" class="sr-only">GitHub username</label>
+          <input
+            id="search-input"
+            type="text"
+            placeholder="Enter a GitHub username"
+            autocomplete="off"
+            class="w-full flex-1 rounded-lg border border-slate-700 bg-slate-900 px-4 py-3 text-slate-100 placeholder-slate-500 transition focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
+          />
+          <button
+            id="search-button"
+            type="submit"
+            class="rounded-lg bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400 disabled:cursor-not-allowed disabled:opacity-60"
+          >
+            Search
+          </button>
+        </form>
+
+        <div class="mt-4 flex flex-wrap items-center justify-center gap-2 text-sm text-slate-400">
+          <span>Try:</span>
+          <button type="button" data-username="torvalds" class="rounded-full border border-slate-700 px-3 py-1 transition hover:border-indigo-500 hover:text-indigo-400">torvalds</button>
+          <button type="button" data-username="gaearon" class="rounded-full border border-slate-700 px-3 py-1 transition hover:border-indigo-500 hover:text-indigo-400">gaearon</button>
+          <button type="button" data-username="sindresorhus" class="rounded-full border border-slate-700 px-3 py-1 transition hover:border-indigo-500 hover:text-indigo-400">sindresorhus</button>
+        </div>
+      </section>
+
+      <!-- Loading and error messages -->
+      <div id="status-message" role="status" aria-live="polite" class="mx-auto mt-8 hidden max-w-2xl"></div>
+
+      <!-- Profile -->
+      <section id="profile-section" class="mt-10 hidden" aria-label="Profile">
+        <div id="profile"></div>
+      </section>
+
+      <!-- Repositories -->
+      <section id="repos-section" class="mt-10 hidden" aria-labelledby="repos-title">
+        <h2 id="repos-title" class="mb-4 text-xl font-semibold sm:text-2xl">
+          Latest repositories
+        </h2>
+        <ul id="repos-list" class="grid grid-cols-1 gap-4 md:grid-cols-2"></ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
